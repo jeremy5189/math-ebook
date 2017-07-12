@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>指數圖形</title>
+
+	<!-- 內容標準檔頭開始 -->
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no,minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet"  href="../../include/css/jquery.mobile-1.1.1.min.css" />
+	<link rel="stylesheet" href="../../include/css/custom-style.css"/>
+	<script src="../../include/lib/jquery-1.7.2.min.js"></script>
+	<script src="../../include/js/functions.js"></script>
+	<script src="../../include/lib/jquery.mobile-1.1.1.min.js"></script>
+	<!-- 內容標準檔頭結束 -->
+
+	<!-- Import JSXGraph -->
+	<link rel="stylesheet" href="../../include/css/jsxgraph.css"/>
+	<script src="../../include/js/jsxgraphcore.js"></script>
+	
+	<script type="text/javascript">
+			 
+			 $('.type-interior').live('pageshow', function () {
+				var b = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-3, 3, 3, -1], axis:true});
+				var p1 = b.create('point',[0,0.5], {name:'A',size:4});
+				b.create("functiongraph",[function(x){return Math.pow(p1.Y(),x); }]);
+				
+				var b2 = JXG.JSXGraph.initBoard('jxgbox2', {boundingbox: [-3, 3, 3, -3], axis:true});
+				var p2 = b2.create('point',[0,0], {name:'A',size:4});
+				b2.create("functiongraph",[function(x){return Math.pow(2,x - p2.X()) + p2.Y() ;}]);
+							
+			 });
+			 			
+	</script>
+	
+	</head> 
+<body> 
+
+<div data-role="page" class="type-interior"> 
+
+	<div data-role="header" data-theme="f">
+		<h1>指數圖形</h1>	
+		<a href="../../index.html" data-icon="home"  data-direction="reverse">首頁</a>
+		<a href="../tools/graph.html" data-icon="gear"  data-transition="pop">工具</a>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		
+		<div class="content-primary">
+			<h2>定義</h2>
+			<p>a > 0 且 a 不為1，x屬於實數，滿足以上條件的話<br/><br/>
+			<img src="../images/p_function.png" alt="指數函數的定義"/>
+			</p>
+			<h2>性質</h2>
+			<p>a > 0 且 a 不為1，x屬於實數 <img src="../images/y=a^x.png" alt="image"/>的指數函數性質。這些性質在我們做圖及解高中數學題時常用到<br/><br/>
+			<img src="../images/p_function_pro.png" alt="指數函數性質"/>
+			<img src="../images/p_function_pro2.png" alt="指數函數性質"/>
+			<img src="../images/p_function_pro3.png" alt="指數函數性質"/>
+			</p>
+			<h2>平移</h2>
+			<p><img src="../images/p_function_move.png" alt="指數函數平移"/></p>
+			
+			<h2>底數大小對圖形的影響</h2>
+			<p>以下為 y = a^x 的函數圖形，圖中紅色的小點可用手移動，上下移動(Y座標改變)可改變 a 值</p>
+			<div id="jxgbox" class="jxgbox" style="width:400px; height:400px;"></div>
+			<p>將紅點於 0.5 至 1.5 的區間中移動，我們可以輕易的統整出以下結論</p>
+			<ul>
+				<li>a值越大，函數圖形坡度越陡(增長較快)</li>
+				<li>a等於1時，圖形幾乎為一平行線</li>
+				<li>a大於1時，圖形向左凹</li>
+				<li>a小於1時，圖形向右凹</li>
+				<li>a小於0時，圖形不存在</li>
+			</ul>
+			
+			<h2>標準式</h2>
+			<p>通常，我們會把對數函數假設為</p>
+			<img src="../images/exp_std_fn.png" alt=""/>
+			<p>其中，h代表 x 軸的位移，k 代表 y 軸的位移。</p>
+			
+			<h2>對數函數的平移</h2>
+			<p>圖中為<img src="../images/exp_std_fn.png" alt=""/>的圖形，其中a = 2</p>
+			<p>紅色小點的 X 座標為 h，Y座標為 k，請嘗試移動紅色小點，觀察圖形平移的結果</p>
+			<div id="jxgbox2" class="jxgbox" style="width:400px; height:400px;"></div>			
+			
+		</div>
+		
+		<div class="content-secondary">
+			<div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d">
+	
+				<!-- 同章節連結 -->
+				<h3>章節</h3>
+					
+					<ul data-role="listview" data-theme="c" data-dividertheme="d">
+					<li><a href="log.html">對數性質 &amp; 運算</a></li>
+					<li><a href="log-graph.html" >對數圖形</a></li>
+					<li data-theme="a"><a href="exponential-function.html" >指數圖形</a></li>
+					<li><a href="interest.html">利息計算</a></li>
+					<li><a href="bignumber.html">大數處理</a></li>				
+					</ul>
+			</div>
+		</div>			
+
+	</div><!-- /content -->
+
+	<div data-role="footer" class="footer-docs" data-theme="c">
+			<p>&copy; 2012 松山高中資訊研究社</p>
+	</div>				
+	
+</div><!-- /page -->
+
+</body>
+</html>

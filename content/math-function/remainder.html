@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>餘式定理</title>
+
+	<!-- 內容標準檔頭開始 -->
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no,minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet"  href="../../include/css/jquery.mobile-1.1.1.min.css" />
+	<link rel="stylesheet" href="../../include/css/custom-style.css"/>
+	<script src="../../include/lib/jquery-1.7.2.min.js"></script>
+	<script src="../../include/js/functions.js"></script>
+	<script src="../../include/lib/jquery.mobile-1.1.1.min.js"></script>
+	<!-- 內容標準檔頭結束 -->
+
+	</head> 
+<body> 
+
+<div data-role="page" class="type-interior"> 
+
+	<div data-role="header" data-theme="f">
+		<h1>餘式定理</h1>	
+		<a href="../../index.html" data-icon="home" data-direction="reverse">首頁</a>
+		<a href="../tools/graph.html" data-icon="gear"  >工具</a>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		
+		<div class="content-primary">
+			<h2>除法原理</h2>
+			<p>給定兩個多項式 f( x ) 與 g( x ) ，且g( x )不是零多項式，用f( x ) 除以 g( x ) , 恰有一組多項式 q( x ) ,r( x ) 使</p>
+
+			<p><b>f( x ) ＝ g( x ) q( x ) ＋ r( x )  </b><br/>
+          其中 r(x) ＝0 或 deg r( x ) ＞ deg g( x )</p>
+
+			<p>註：deg r( x )為該多項式的最高次方數</p>
+			
+			<p>此時滿足上式的 q( x ) , r( x ) 分別稱為f( x )除以g( x )的商式,餘式</p>
+
+			<h2>說明</h2>
+			
+			<img src="../images/rem-dis.png" alt=""/>
+			
+			<h2>例題一</h2>
+			<img src="../images/rem-exm.png" alt=""/>
+			<div data-role="collapsible" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" >
+			<h3>解答</h3>
+			<img src="../images/rem-sul1.png" alt=""/>
+			</div>
+			
+			<h2>餘式定理</h2>
+			<p>
+			f(x) ＝（x－a）q( x ) ＋ r <br/>
+			其中（x－a）是除式,故為求餘式需將除式設為 0  ,所以 x＝a 代入 即可得 r<br/>
+			故 r＝f(a)  ， 此即是餘式定理。
+			</p>
+			
+			<h2>延伸概念</h2>
+			<p>若（x－a）為 f(x) 之因式，<b>則 f(a) 之值等於 r(a) </b>，r 為一個函數，也可記為 r(x) ，次數依除式及被除式的次數而定。</p>
+			<h2>例題二</h2>
+			<img src="../images/rem-exm2.png" alt=""/>
+			<div data-role="collapsible" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" >
+			<h3>解答</h3>
+			<img src="../images/rem-sul2.png" alt=""/>			
+			</div>
+			
+			<h2>例題三</h2>
+			<img src="../images/rem-exm3.png" alt=""/>
+			<div data-role="collapsible" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" >
+			<h3>解答</h3>
+			<img src="../images/rem-sul3.png" alt=""/>			
+			</div>
+			
+		</div>
+		
+		<div class="content-secondary">
+
+			<div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d">
+	
+				<!-- 同章節連結 -->
+				<h3>多項式</h3>
+					
+					<ul data-role="listview" data-theme="c" data-dividertheme="d">
+						<li><a href="slope.html" >直線斜率</a></li>
+						<li data-theme="a"><a href="remainder.html" >餘式定理</a></li>
+						<li><a href="quadratic-function.html" >二次函數 &amp; 圖形</a></li>
+						<li><a href="absolute-function.html" >絕對值函數 &amp; 圖形</a></li>
+						<li><a href="polynomial.html" >聯立 &amp; 插值多項式</a></li>					
+					</ul>
+			</div>
+		</div>		
+
+	</div><!-- /content -->
+
+	<div data-role="footer" class="footer-docs" data-theme="c">
+			<p>&copy; 2012 松山高中資訊研究社</p>
+	</div>				
+	
+</div><!-- /page -->
+
+</body>
+</html>

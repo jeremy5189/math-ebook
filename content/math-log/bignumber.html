@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>大數處理</title>
+	
+	<!-- 內容標準檔頭開始 -->
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no,minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet"  href="../../include/css/jquery.mobile-1.1.1.min.css" />
+	<link rel="stylesheet" href="../../include/css/custom-style.css"/>
+	<script src="../../include/lib/jquery-1.7.2.min.js"></script>
+	<script src="../../include/js/functions.js"></script>
+	<script src="../../include/lib/jquery.mobile-1.1.1.min.js"></script>
+	<!-- 內容標準檔頭結束 -->
+
+	</head> 
+<body> 
+
+<div data-role="page" class="type-interior"> 
+
+	<div data-role="header" data-theme="f">
+		<h1>大數處理</h1>	
+		<a href="../../index.html" data-icon="home"  data-direction="reverse">首頁</a>
+		<a href="../tools/graph.html" data-icon="gear"  >工具</a>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		
+		<div class="content-primary">
+			<h2>首數與尾數</h2>
+			<p>對任意正實數a而言，它恆可表成下列格式</p>
+			<img src="../images/big-eq1.png" alt=""/>
+			<p>由（１）式兩邊取對數得</p>
+			<img src="../images/big-eq2.png" alt=""/>
+			<p>在（２）式中整數b稱為<i>log a</i> 的首數, <i>log N</i>稱為<i>log a</i>的尾數.</p>
+			
+			<p>從函數圖形的觀點來檢視<i>log a</i>的值,因<i>log a</i>可為任意實數,所以<i>log a</i>必介於某兩個連數整數之間,即存在整數n，使</p>
+			<img src="../images/big-eq3.png" alt=""/>
+			
+			<h2>例題一</h2>
+			<img src="../images/big-example1.png" alt=""/>
+			<!-- 摺疊標籤 -->
+			<div data-role="collapsible" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" >
+			<h3>解答</h3>
+			<img src="../images/big-sul1.png" alt=""/>
+			</div>
+			
+			<h2>大數處理</h2>
+			<img src="../images/big-example2.png" alt=""/>
+			<p>這個問題看似很難，因為我們勢必不能將a數完整的算出來，所以這時就可以利用首尾數的特性來解決了。</p>
+			<div data-role="collapsible" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" >
+			<h3>解答</h3>
+			<img src="../images/big-sul2.png" alt=""/>
+			</div>
+			
+		</div>
+		
+		<div class="content-secondary">
+
+			<div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d">
+	
+				<!-- 同章節連結 -->
+				<h3>章節</h3>
+					
+					<ul data-role="listview" data-theme="c" data-dividertheme="d">
+					<li><a href="log.html">對數性質 &amp; 運算</a></li>
+					<li><a href="log-graph.html" >對數圖形</a></li>
+					<li><a href="exponential-function.html" >指數圖形</a></li>
+					<li><a href="interest.html">利息計算</a></li>
+					<li data-theme="a"><a href="bignumber.html">大數處理</a></li>					
+					</ul>
+			</div>
+		</div>		
+
+	</div><!-- /content -->
+
+	<div data-role="footer" class="footer-docs" data-theme="c">
+			<p>&copy; 2012 松山高中資訊研究社</p>
+	</div>				
+	
+</div><!-- /page -->
+
+</body>
+</html>

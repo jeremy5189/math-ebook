@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>聯立 &amp; 插值多項式</title>
+
+	<!-- 內容標準檔頭開始 -->
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no,minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet"  href="../../include/css/jquery.mobile-1.1.1.min.css" />
+	<link rel="stylesheet" href="../../include/css/custom-style.css"/>
+	<script src="../../include/lib/jquery-1.7.2.min.js"></script>
+	<script src="../../include/js/functions.js"></script>
+	<script src="../../include/lib/jquery.mobile-1.1.1.min.js"></script>
+	<!-- 內容標準檔頭結束 -->
+
+	</head> 
+<body> 
+
+<div data-role="page" class="type-interior"> 
+
+	<div data-role="header" data-theme="f">
+		<h1>聯立 &amp; 插值多項式</h1>	
+		<a href="../../index.html" data-icon="home" data-direction="reverse">首頁</a>
+		<a href="../tools/graph.html" data-icon="gear"  >工具</a>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		
+		<div class="content-primary">
+			<h2>求函數值</h2>
+			<p>設 f(x) 為二次多項式，若 f(1) = 2，f(2) = 7，f(-1) = 4，則 f(3) = ?</p>
+			<p>以上問題中，題目給定三個已知的函數值，求一個未知的函數值。如果你有確切的函數，求函數值非常簡單，直接將參數(x)代入計算即可。問題是，題目並沒有告訴我們函數的內容，我們該如何處理呢?</p>
+			
+			<h2>多種解決方案</h2>
+			<ol>
+				<li>設 f(x) = ax^2+ bx + c，將三個解代入後解聯立求得 a,b,c，再將x = 3 代回求解。 </li>
+				<li>利用牛頓插值法處理，公式簡單，只需解一元一次方程式。</li>
+				<li>利用拉格朗日(Lagrange)插值法處理，公式複雜，不必解任何方程式。</li>
+				<li>利用巴貝奇(Babbage)定理處理，但僅限參數成等差數列時才可使用，否則須補足條件(本題中須補上f(0) = 某數 。</li>
+			</ol>
+			
+			<h2>解聯立法</h2>
+			<p>將三個函數值代入後可達一組三元一次聯立方程式</p>
+			<p>
+			f(1) = 2 代入 =>   a + b + c = 2 <br/>
+			f(2) = 7 代入 =>   4a + 2b + c = 7<br/>
+			f(-1) = 4 代入 =>  a - b + c = 4<br/>
+			</p>
+			<p>可利用國中的加減消去法或代入消去法處理，但若要求標準化的公式，可利用克拉瑪法則(Cramer's rule)處理。</p>
+			<p>克拉瑪法則能用公式處理n元一次聯立方程式，並求出所有解。這裡介紹二元一次方程式的解法，讀者記憶後便可快速求解。至於三元的克拉瑪公式因為稍微複雜一些，所以在此略過不提。</p>
+			<img src="../images/cramer.png" alt=""/>
+				
+			<h2>牛頓插值法</h2>
+			<p>將f(x)依照題目提供之函數值假設為</p>
+			<p>f(x) =  a  ( x - 1) ( x - 2 )  + b  ( x - 1)  + c ，其中 a,b,c未知</p>
+			<p>接下來<b>代入 x = 1</b>，這會造成前面三項相乘為0，使我們求得 c = 2。接著<b>依次代入 x = 2, x = -1</b>，直到求出 a = 2，c = 5 為止，這時代入 x = 3 即可求出解為 16。</p>
+			
+			<h2>拉格朗日插值法</h2>
+			<img src="../images/Lagrange.png" alt=""/>
+			<p>故若利用拉格朗日插值法求解，只需將題目給定的條件代入即可。</p>
+			
+			<h2>巴貝奇定理</h2>
+			<p>巴貝奇定理以差分(階插)的概念為主，簡單來說，就是將多項式值排好後，相減得到第一組差，再互相相減得到第二組差，直到剩下兩個<b>相等的差</b>為止。</p>
+			<p>由於上述題目給定的函數值並為成等差數列，不符合條件，故以下為另一個題目。</p>
+			<p>設 f(x) 為一三次多項式，若f(123) = 5，f(124) = 6，f(125) = 25，f(126) = 44，則f(122) = ?</p>
+			<p><b>令f(122) = k，將函數值由小至大排好，加入未知函數值，開始相減</b></p>
+			<img src="../images/Babbage.png" alt=""/>
+			<p>剩下兩個函數值即可停止，這時， 22-k = -18，故所求 k 為 40。</p>
+		</div>
+		
+		<div class="content-secondary">
+
+			<div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d">
+	
+				<!-- 同章節連結 -->
+				<h3>多項式</h3>
+					
+					<ul data-role="listview" data-theme="c" data-dividertheme="d">
+						<li><a href="slope.html" >直線斜率</a></li>
+						<li><a href="remainder.html" >餘式定理</a></li>
+						<li><a href="quadratic-function.html" >二次函數 &amp; 圖形</a></li>
+						<li><a href="absolute-function.html" >絕對值函數 &amp; 圖形</a></li>
+						<li data-theme="a"><a href="polynomial.html" >聯立 &amp; 插值多項式</a></li>					
+					</ul>
+			</div>
+		</div>		
+
+	</div><!-- /content -->
+
+	<div data-role="footer" class="footer-docs" data-theme="c">
+			<p>&copy; 2012 松山高中資訊研究社</p>
+	</div>				
+	
+</div><!-- /page -->
+
+</body>
+</html>

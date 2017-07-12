@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>斜率</title>
+
+	<!-- 內容標準檔頭開始 -->
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no,minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet"  href="../../include/css/jquery.mobile-1.1.1.css" />
+	<link rel="stylesheet" href="../../include/css/custom-style.css"/>
+	<script src="../../include/lib/jquery-1.7.2.min.js"></script>
+	<script src="../../include/js/functions.js"></script>
+	<script src="../../include/lib/jquery.mobile-1.1.1.min.js"></script>
+	<!-- 內容標準檔頭結束 -->
+
+	<!-- Import JSXGraph -->
+	<link rel="stylesheet" href="../../include/css/jsxgraph.css"/>
+	<script src="../../include/js/jsxgraphcore.js"></script>
+	
+	<script type="text/javascript">
+
+	$('.type-interior').live('pageshow', function () {
+		var b = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-5, 2, 5, -2], axis:true});
+		var p1 = b.create('point',[-1,1], {name:'A',size:4});
+		var p2 = b.create('point',[2,-1], {name:'B',size:4});
+		var li = b.create('line',["A","B"], {strokeColor:'#fb0000',strokeWidth:2});
+		var li2 = b.create('line',[p1,p2], {straightFirst:false, straightLast:false, strokeWidth:2, dash:2});
+	});
+	
+	</script>
+	
+	</head> 
+<body> 
+
+<div data-role="page" class="type-interior"> 
+
+	<div data-role="header" data-theme="f">
+		<h1>直線斜率</h1>	
+		<a href="../../index.html" data-icon="home" data-direction="reverse">首頁</a>
+		<a href="../tools/graph.html" data-icon="gear" >工具</a>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		
+		<div class="content-primary">
+			<h2>簡介</h2>
+			<p>斜率用來量度斜坡的斜度。在數學上，它是直線的傾斜程度的量度。透過代數和幾何，可以計算出直線的斜率；曲線的上某點的斜率則反映了此曲線的變數在此點處的變化的快慢程度。</p>
+			<p>運用微積分可計算出曲線中的任一點的斜率；在物理v-t圖中可求瞬時速率。</p>
+			<h2>說明</h2>
+			<img src="../images/slope_def.png" alt=""/>
+			<h2>性質</h2>
+			<p>以下 m 皆指斜率</p>
+			<img src="../images/slope_pro1.png" alt=""/>
+			<img src="../images/slope_pro2.png" alt=""/>
+			<h2>例題</h2>
+			<img src="../images/slope_ex1.png" alt=""/>
+			<div data-role="collapsible" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" >
+			<h3>解答</h3>
+			<img src="../images/slope_ans1.png" alt=""/>
+			</div>
+			<img src="../images/slope_ex2.png" alt=""/>
+			<div data-role="collapsible" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" >
+			<h3>解答</h3>
+			<img src="../images/slope_ans2.png" alt=""/>
+			</div>
+		</div>
+		
+		<div class="content-secondary">
+
+			<div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d">
+	
+				<!-- 同章節連結 -->
+				<h3>多項式</h3>
+					
+					<ul data-role="listview" data-theme="c" data-dividertheme="d">
+						<li data-theme="a"><a href="slope.html" >直線斜率</a></li>
+						<li><a href="remainder.html" >餘式定理</a></li>
+						<li><a href="quadratic-function.html" >二次函數 &amp; 圖形</a></li>
+						<li><a href="absolute-function.html" >絕對值函數 &amp; 圖形</a></li>
+						<li><a href="polynomial.html" >聯立 &amp; 插值多項式</a></li>					
+					</ul>
+			</div>
+		</div>		
+
+	</div><!-- /content -->
+
+	<div data-role="footer" class="footer-docs" data-theme="c">
+			<p>&copy; 2012 松山高中資訊研究社</p>
+	</div>				
+	
+</div><!-- /page -->
+
+</body>
+</html>

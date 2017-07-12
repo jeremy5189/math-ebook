@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>對數性質 &amp; 運算</title>
+		
+	<!-- 內容標準檔頭開始 -->
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no,minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet"  href="../../include/css/jquery.mobile-1.1.1.min.css" />
+	<link rel="stylesheet" href="../../include/css/custom-style.css"/>
+	<script src="../../include/lib/jquery-1.7.2.min.js"></script>
+	<script src="../../include/js/functions.js"></script>
+	<script src="../../include/lib/jquery.mobile-1.1.1.min.js"></script>
+	<!-- 內容標準檔頭結束 -->
+	
+	</head> 
+<body> 
+
+<div data-role="page" class="type-interior"> 
+
+	<div data-role="header" data-theme="f">
+		<h1>對數性質 &amp; 運算</h1>	
+		<a href="../../index.html" data-icon="home"  data-direction="reverse">首頁</a>
+		<a href="../tools/graph.html" data-icon="gear"  >工具</a>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		
+		<div class="content-primary">
+			<h2>簡介</h2>
+			<p>對數(Logarithm)，是數學上一個非常好用的工具。在沒有計算機的時代，對數及對數表使繁複的計算成為可能，它能幫助我們化簡極大的數字，將之轉換為人類能理解的數量級，也可以幫助我們計算極大次方之值。現代主要應用於地震規模，酸鹼值，分貝等測定及運算。</p>
+			
+			<h2>定義</h2>
+			<p>若 a > 0，a 不為1，b > 0，且a,b滿足 a 的 x 次方等於 b，則可記為<br/><br/>
+			<img src="../images/log-def-1.png" alt="對數定義"/>
+			</p>
+			
+			<h2>性質與公式</h2>
+			<p>
+			<img src="../images/log-def-2.png" alt="對數性質"/>
+			</p>
+			
+			<h2>說明</h2>
+			<p>以上總共列出10個對數性質與公式，但讀者並不必記憶全部的公式，只要注意
+			<ul>
+				<li>2. 化乘為加, 3. 化除為減</li>
+				<li>4. 真數次方往前提(5.可類推，因為N分之一即為N的-1次方)</li>
+				<li>5. 換底公式</li>
+			</ul>
+			</p>
+			
+			<h2>化乘為加，化除為減</h2>
+			<p>
+			<img src="../images/log-example-1.png" alt="化成為加"/><br/><br/>
+			上列例題中，我們可利用log化乘為加的性質，將題目給定的兩個對數相加，相加過程中不必裡會底數(10)，只要專注於 2 x 3 = 6 即可，如此一來，我們便順利得到 log 6 (以10為底)
+			<ul>
+				<li>(1)  6 = 2 x 3，所求 = log2 + log 3 = 0.3010 + 0.4771 </li>
+				<li>(2)  8 = 2 x 2 x 2，所求 = 3 x log2 = 3 x 0.3010 </li>
+				<li>(3)  5 = 10 / 1，所求 = log10 - log2 = 1 -  0.3010  </li>
+			</ul>
+			</p>
+			
+			<h2>大數化小</h2>
+			<p>
+			<img src="../images/log-example-2.png" alt="大數化小"/><br/><br/>
+			上述範例中，3 x 10 的 8 次方被分開成兩個 log，後者的次方 8 被提到 log 前面，而 log10 剛好為 1，又查表得知 log3 = 0.4771，故 log(c) 取對數後可記為 8.4771。
+			</p>
+			
+			<h2>換底公式</h2>
+			<p>
+			雖然有些對數較為簡易，可以手算完成，但複雜一點的對數可能就要交給電腦了。麻煩的是，電腦只會算自然對數 (以 e = 2.71828  為底的對數，原因會在下面討論)，所以這時便要使用換底公式，將欲求的對數轉為自然對數後，交給電腦計算。<br/><br/>
+			<img src="../images/log-change-base.png" alt="換底公式"/><br/>註: ln 為自然對數的簡寫( Natural log )<br/><br/>
+			至於電腦計算ln()的方法，則是利用泰勒展開式處理，由於其具有規律性，可以方便的用程式語言描述。<br/><br/>
+			<img src="../images/log-ln-expand.png" alt="泰勒展開式" class="whi"/>
+			</p>
+			
+			<h2>對數應用</h2>
+			<h3>分貝測定(噪音程度)</h3>
+			<p>
+			<img src="../images/log-sound.png" alt="分貝測定" class="whi" /><br/><br/>
+			L是分貝數值<br/>
+			I為量度的密度，I(0)為「特定參考密度」，人耳的起始可聽「密度」為10^(-12)  W/m^2<br/>
+			P為量度的壓力，P(0)為「特定參考壓力」，人耳的始聽壓力為10^(-5)  N/m^2<br/>
+			</p>
+			
+			<h3>酸鹼值測定</h3>
+			<p>
+			<img src="../images/log-ph.png" alt="分貝測定" class="whi" /><br/><br/>
+			PH值在化學中，代表該溶液的氫離子濃度 [H+]，若 [H+] = 10^(-3)，則PH = 3
+			</p>
+			
+			<h2>影片教學：對數簡介</h2>
+			<iframe width="420" height="315" src="http://www.youtube.com/embed/mQTWzLpCcW0" frameborder="0" allowfullscreen></iframe>
+			<p>影片來自 <a href="http://www.khanacademy.org">KhanAcademy</a>，更多<a href="http://www.khanacademy.org/math/algebra/logarithms">對數相關</a>影片<br/><br/></p>
+			
+			<h2>例題一</h2>
+			<img src="../images/log-example1.png" alt=""/>
+			<!-- 摺疊標籤 -->
+			<div data-role="collapsible" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" >
+			<h3>解答</h3>
+			<img src="../images/log-sul1.png" alt=""/>
+			</div>
+			
+			<h2>例題二</h2>
+			<img src="../images/log-example2.png" alt=""/>
+			<!-- 摺疊標籤 -->
+			<div data-role="collapsible" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" >
+			<h3>解答</h3>
+			<img src="../images/log-sul2.png" alt=""/>
+			</div>
+
+		</div>
+		
+		<div class="content-secondary">
+
+			<div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d">
+	
+				<!-- 同章節連結 -->
+				<h3>章節</h3>
+					
+					<ul data-role="listview" data-theme="c" data-dividertheme="d">
+					<li data-theme="a"><a href="log.html">對數性質 &amp; 運算</a></li>
+					<li><a href="log-graph.html" >對數圖形</a></li>
+					<li><a href="exponential-function.html" >指數圖形</a></li>
+					<li><a href="interest.html">利息計算</a></li>
+					<li><a href="bignumber.html">大數處理</a></li>					
+					</ul>
+			</div>
+		</div>		
+
+	</div><!-- /content -->
+
+	<div data-role="footer" class="footer-docs" data-theme="c">
+			<p>&copy; 2012 松山高中資訊研究社</p>
+	</div>				
+	
+</div><!-- /page -->
+
+</body>
+</html>

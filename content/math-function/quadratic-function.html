@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title >二次函數 &amp; 圖形</title>
+
+	<!-- 內容標準檔頭開始 -->
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no,minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet"  href="../../include/css/jquery.mobile-1.1.1.min.css" />
+	<link rel="stylesheet" href="../../include/css/custom-style.css"/>
+	<script src="../../include/lib/jquery-1.7.2.min.js"></script>
+	<script src="../../include/js/functions.js"></script>
+	<script src="../../include/lib/jquery.mobile-1.1.1.min.js"></script>
+	<!-- 內容標準檔頭結束 -->
+	
+	<!-- Import JSXGraph -->
+	<link rel="stylesheet" href="../../include/css/jsxgraph.css"/>
+	<script src="../../include/js/jsxgraphcore.js"></script>
+	
+	<style type="text/css">
+	#mp {
+		position: relative;
+		top: 15px;
+	}
+	</style>
+	
+	<script type="text/javascript">
+			 
+			 $('.type-interior').live('pageshow', function () {
+				var b = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-5, 2, 5, -2], axis:true});
+				var p1 = b.create('point',[0,1], {name:'A',size:4});
+				b.create("functiongraph",[function(x){return p1.Y() * x * x;}]);
+				
+				var b2 = JXG.JSXGraph.initBoard('jxgbox2', {boundingbox: [-5, 3, 5, -3], axis:true});
+			    var p2 = b2.create('point',[0,0], {name:'A',size:4});
+				b2.create("functiongraph",[function(x){return (x - p2.X() ) * (x - p2.X() ) + p2.Y();}]);
+				
+			 });
+	</script>
+	
+	</head> 
+<body> 
+
+<div data-role="page" class="type-interior"> 
+
+	<div data-role="header" data-theme="f">
+		<h1>二次函數 &amp; 圖形</h1>	
+		<a href="../../index.html" data-icon="home" data-direction="reverse">首頁</a>
+		<a href="../tools/graph.html" data-icon="gear"  >工具</a>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		
+		<div class="content-primary">
+			<h2>定義</h2>
+			<p>a,b,c 為實數，a不為0，<img src="../images/y=ax2.png" alt="y=ax^2+bx+c"/> 稱為二次函數</p>
+			
+			<h2>說明</h2>
+			<p>要了解函數，圖形是不可或缺的工具。而要畫出圖形，對函數性質又要一定了解。函數與圖形是相輔相成的關係。
+			<p>對於二次函數，我們透過配方法: <br/> <img src="../images/x2_method.png" alt="配方法"/><br/></p>
+			平方裡必為正，而後面加的是固定的數，因此
+			當x=-b/2a <ul><li>a>0，y有最小值，因不論x向左或向右都會增加y</li><li>a&lt;0，y有最大值，因不論x向左或向右都會減少y</li></ul>
+			而其所繪製出的圖恰成拋物線，不難想像其必有一最高或最低點
+			</p>
+			<h2>整理</h2>
+			<p>對於二次函數圖形我們要掌握
+			<ol>
+			<li>頂點 <img src="../images/q_top.png" alt=""/></li>
+			<li>其必為拋物線，以頂點的x座標為對稱軸</li><br/>
+			<li>當a>0,開口向上;當a&lt;0，開口向下</li><br/>
+			<li>領導係數a的絕對值愈大，開口越小</li><br/>
+			<li>圖形經過點(0,c) (根1,0) (根2,0)</li><br/>
+			</ol></p>
+			
+			<h2>領導係數a對開口大小的影響</h2>
+			<p>以下為 y = ax^2 的函數圖形，圖中紅色的小點可用手移動，上下移動可改變 a 值，請觀察 a 值(領導係數)改變後圖形的影響</p>
+			<div id="jxgbox" class="jxgbox" style="width:400px; height:400px;"></div>
+			
+			<h2>標準式</h2>
+			<p>通常，我們會把二次函數假設為</p>
+			<img src="../images/q_std_fn.png" alt=""/>
+			<p>其中，h代表 x 軸的位移，k 代表 y 軸的位移。</p>
+			
+			<h2>二次函數的平移</h2>
+			<p>圖中為<img src="../images/q_std_fn.png" id="mp"/>的圖形</p>
+			<p>紅色小點的 X 座標為 h，Y座標為 k，請嘗試移動紅色小點，觀察圖形平移的結果</p>
+			<div id="jxgbox2" class="jxgbox" style="width:400px; height:400px;"></div>			
+		</div>
+		
+		<div class="content-secondary">
+
+			<div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d">
+	
+				<!-- 同章節連結 -->
+				<h3>多項式</h3>
+					
+					<ul data-role="listview" data-theme="c" data-dividertheme="d">
+						<li><a href="slope.html" >直線斜率</a></li>
+						<li><a href="remainder.html">餘式定理</a></li>
+						<li data-theme="a"><a href="quadratic-function.html" >二次函數 &amp; 圖形</a></li>
+						<li><a href="absolute-function.html" >絕對值函數 &amp; 圖形</a></li>
+						<li><a href="polynomial.html">聯立 &amp; 插值多項式</a></li>					
+					</ul>
+			</div>
+		</div>		
+
+	</div><!-- /content -->
+
+	<div data-role="footer" class="footer-docs" data-theme="c">
+			<p>&copy; 2012 松山高中資訊研究社</p>
+	</div>				
+	
+</div><!-- /page -->
+
+</body>
+</html>

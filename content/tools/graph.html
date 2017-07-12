@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>工具</title>
+
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">	
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no,minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet"  href="../../include/css/jquery.mobile-1.1.1.min.css" />
+	<link rel="stylesheet" href="../../include/css/custom-style.css"/>
+	
+	<script src="../../include/lib/jquery-1.7.2.min.js"></script>
+	<script src="../../include/js/functions.js"></script>
+	<script src="../../include/lib/jquery.mobile-1.1.1.min.js"></script>
+	
+	
+	<!-- Import Graph Library-->
+	<link rel="stylesheet" type="text/css" href="../../include/css/graph.css">
+	<script src="../../include/js/remedial.js" type="text/javascript"></script>
+	<script src="../../include/js/parser.js" type="text/javascript"></script>
+	<script src="../../include/js/graph.js" type="text/javascript"></script>
+	<script src="../../include/js/graph-app.js" type="text/javascript"></script>	
+	
+	<style type="text/css">
+	#graph-area {
+		padding-left: 15%;
+		padding-right: 15%;
+	}
+	
+	#disc {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+	
+	#canvasSignature {
+	}
+	
+	#warning {
+		border: 1px solid rgb(247, 201, 66);
+		background: rgb(250, 219, 78) ;
+		color: rgb(51, 51, 51);
+		text-shadow: 0 1px  0 white;
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+	
+	.btn {
+		width: 50px;
+	}
+	
+	</style>
+	
+	<script src="../../include/js/board.js"></script>
+	<script type="text/javascript" src="../../include/js/calculate.js"></script>
+	
+	<script type="text/javascript">
+	
+	 var myWidth = 0, myHeight = 0;
+	 var flag = "graph";
+	
+	// Page Onload
+	$(document).bind( 'pageinit' , function()  {
+	   
+	    initialize(); // 啟動白板
+		getScreenSize() ; // 取得螢幕大小
+		$('#options').css('margin-left', myWidth  / 2 - 109 - 67 ); //調整按鈕位置
+		$('#board-area').hide();
+		$('#warning').hide();
+		$('#calc').hide();
+		
+		if( window.orientation == 90 ) // 處理橫向啟動
+		{
+			changeTo( "landscape" );
+		}
+	});
+	
+	// handle裝置轉向
+	$(document).bind('orientationchange', function(event) {
+		
+		if( event.orientation == "portrait" ) // 直向
+		{
+			changeTo( "portrait" );
+		}
+		
+		if( event.orientation == "landscape" ) // 橫向
+		{
+			changeTo( "landscape" );
+		}
+	});
+	
+	function changeTo( orin )
+	{
+		if( orin == "portrait" ) // 直向
+		{
+			getScreenSize() ;
+			$('#options').css('margin-left', myWidth  / 2 - 109 - 67 );
+			$('#canvasSignature').css( 'width', '735px');
+			$('#canvasSignature').css( 'height', '800px');
+			$('#warning').hide();
+		}
+		
+		if( orin == "landscape" ) // 橫向
+		{
+			getScreenSize() ;
+			$('#options').css('margin-left', myWidth  / 2 - 109 - 67 );
+			$('#canvasSignature').css( 'width', '990px');
+			$('#canvasSignature').css( 'height', '600px');
+			if( flag == "board" )
+				$('#warning').show();
+		}
+	}
+	
+	function callBoard() 
+	{
+		flag  = "board";
+		$('#graph-area').hide();
+		$('#calc').hide();
+		$('#board-area').show();
+		if( window.orientation == 90 || window.orientation == -90　 )
+			$('#warning').show();
+	}
+	
+	function callGraph()
+	{
+		flag = "graph";
+		$('#board-area').hide();
+		$('#calc').hide();
+		$('#graph-area').show();
+		$('#warning').hide();
+	}
+	
+	function callCalc()
+	{
+		flag = "calc";
+		$('#calc').show();
+		$('#board-area').hide();
+		$('#warning').hide();
+		$('#graph-area').hide();
+	}
+	
+	
+	</script>
+	
+</head>
+<body>
+<div data-role="page">
+
+	<div data-role="header" data-theme="f">
+		<h1>工具</h1>
+		<a href="javascript:history.back()" data-icon="back">返回</a>
+		<a href="../../index.html" data-icon="home" data-direction="reverse">首頁</a>
+	</div><!-- /header -->
+
+	<div data-role="content">
+	
+		<div id="options" >
+		<fieldset data-role="controlgroup" data-type="horizontal">
+     	
+		<input type="radio" name="radio-choice" id="radio-choice-1" value="choice-1" checked="checked" onclick="callGraph()" />
+     	<label for="radio-choice-1">繪圖工具</label>
+
+     	<input type="radio" name="radio-choice" id="radio-choice-2" value="choice-2" onclick="callBoard()"  />
+     	<label for="radio-choice-2">手繪白板</label>
+
+		<input type="radio" name="radio-choice" id="radio-choice-3" value="choice-3" onclick="callCalc()"  />
+     	<label for="radio-choice-3">計算面板</label>
+		
+		</fieldset>
+		</div>	
+		<div id="warning">
+			<center><p><b>小提醒：使用手繪白板時，請盡量將裝置直立(Portrait)，以獲得最佳使用經驗</b></p></center>
+		</div>
+			
+		<div id="graph-area">
+		<br/>
+			<center><canvas id="gcanvas" width="510" height="510" ></canvas></center>
+			<br/>
+			<form id="gform" action="#">
+			<label for="gcommand">輸入方程式或指令)</label>
+			<input id="gcommand" size="40" type="text" />
+			</form>	
+			<br/>
+			<!-- 摺疊標籤 -->
+			<div id="disc" data-role="collapsible" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" >
+			<h3>說明範例及範例</h3>
+<pre>
+請在輸入方格輸入正確的指令進行操作，輸入完成後請按下Enter(Go)
+欲繪製方程式，請記得在方程式前加上 Plot，範例如下：
+<p>
+<b>直線: </b>     Plot x <br/>
+<b>二次函數: </b> Plot x^2 <br/>
+<b>X函數: </b>    Plot f(x) = x^2 + x + 1 / y = x^2 + x + 1 <br/>
+<b>Y函數: </b>    Plot f(y) = y^2 + y + 1 / x = y^2 + y + 1 <br/>
+<b>絕對值: </b>   Plot log(x) <br/>
+<b>對數: </b>     Plot abs(x) <br/>
+<b>三角函數: </b> Plot sin(5*x)*cos(5*x) <br/>
+<b>極座標: </b>   Plot r = 1 - sin(t) 
+</p>
+設定常數(不可設定x,y)，改變常數將影響目前的圖形
+<p>
+<b>常數: </b>     Let a = 123 <br/>
+<b>運算式: </b>   Let b = 1 * 2 + 3 
+</p>
+刪除圖形(從0開始)
+<p>
+<b>圖形1: </b>     Delete 0 
+</p>
+</pre>
+			</div>
+			
+		</div>
+		
+		<div id="board-area">
+		<canvas id="canvasSignature"  width="735" height="800"> 
+        對不起，您的瀏覽器不知援HTML5
+       </canvas>		
+		</div>
+		
+			<div id="calc">
+		<center>
+		<form name="calculator">
+			<table border="0" cellpadding="2" cellspacing="0"  width="233" height="259">
+			<tr><td align="center" style="padding-bottom:0px;padding-top:15px"><input type="text" name="win" value="0" style="height:30px;width:270px;text-align:right;font-size:20px;font-weight:bold;border:1px solid #666666;padding-right:2px;" maxlength='15'></td></tr>
+			<tr><td>
+			<table border="0" cellpadding="5" cellspacing="1" align="center">
+
+			<tr><td style="padding-top:0px"><input type="button" value="CE" class="btn"onClick="calc('CE')"></td>
+			<td style="padding-top:0px"><input type="button" value="C" class="btn"onClick="calc('C')"></td>
+			<td style="padding-top:0px"><input type="button" value="+/-" class="btn"onClick="calc('+/-')"></td>
+			<td style="padding-top:0px"><input type="button" value="%" class="btn"onClick="calc('%')"></td></tr>
+
+			<tr><td><input type="button" value="7" class="btn"onClick="calc('7')"></td>
+			<td><input type="button" value="8" class="btn"onClick="calc('8')"></td>
+			<td><input type="button" value="9" class="btn"onClick="calc('9')"></td>
+			<td><input type="button" value="/" class="btn"onClick="calc('/')"></td></tr>
+
+			<tr><td><input type="button" value="4" class="btn"onClick="calc('4')"></td>
+			<td><input type="button" value="5" class="btn"onClick="calc('5')"></td>
+			<td><input type="button" value="6" class="btn"onClick="calc('6')"></td>
+			<td><input type="button" value="x" class="btn"onClick="calc('*')"></td></tr>
+
+			<tr><td><input type="button" value="1" class="btn"onClick="calc('1')"></td>
+			<td><input type="button" value="2" class="btn"onClick="calc('2')"></td>
+
+			<td><input type="button" value="3" class="btn"onClick="calc('3')"></td>
+			<td><input type="button" value="-" class="btn"onClick="calc('-')"></td></tr>
+
+			<tr><td><input type="button" value="0" class="btn"onClick="calc('0')"></td>
+			<td><input type="button" value="." class="btn"onClick="calc('.')"></td>
+			<td><input type="button" value="=" class="btn"onClick="calc('=')"></td>
+			<td><input type="button" value="+" class="btn"onClick="calc('+')"></td></tr>
+			</table>
+			</td></tr>
+			</table>
+			</form>
+			</center>
+		</div>
+	
+	
+	</div><!-- /content -->
+	
+	<div data-role="footer" class="footer-docs" data-theme="c">
+			<p>&copy; 2012 松山高中資訊研究社</p>
+	</div>	
+	
+	
+</div><!-- /page -->
+
+</body>
+</html>
